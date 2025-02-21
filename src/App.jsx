@@ -13,14 +13,12 @@ export const tabs = [
 export const App = () => {
   const [activeTabId, setActiveTabId] = useState('tab-1');
 
-  // Функція, яка обробляє вибір вкладки
   const handleTabSelected = tabId => {
     setActiveTabId(tabId);
   };
 
   return (
     <div className="section">
-      {/* Передаємо activeTabId та onTabSelected як пропси */}
       <Tabs
         tabs={tabs}
         activeTabId={activeTabId}
