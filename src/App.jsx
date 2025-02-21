@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
@@ -10,8 +10,22 @@ export const tabs = [
   { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
 ];
 
-export const App = () => (
-  <div className="section">
-    <Tabs tabs={tabs} />
-  </div>
-);
+export const App = () => {
+  const [activeTabId, setActiveTabId] = useState('tab-1');
+
+  // Функція, яка обробляє вибір вкладки
+  const handleTabSelected = tabId => {
+    setActiveTabId(tabId);
+  };
+
+  return (
+    <div className="section">
+      {/* Передаємо activeTabId та onTabSelected як пропси */}
+      <Tabs
+        tabs={tabs}
+        activeTabId={activeTabId}
+        onTabSelected={handleTabSelected}
+      />
+    </div>
+  );
+};
